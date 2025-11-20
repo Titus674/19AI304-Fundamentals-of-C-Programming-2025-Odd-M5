@@ -39,7 +39,51 @@
 ### Step 12: 
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+// Step 3: Function for swapping using call by value
+void swapv(int x, int y) {
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+    printf("Inside swapv (formal parameters swapped): a = %d, b = %d\n", x, y);
+}
+
+// Step 3: Function for swapping using call by reference
+void swapr(int *x, int *y) {
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+    printf("Inside swapr (actual parameters swapped): a = %d, b = %d\n", *x, *y);
+}
+
+int main() {
+    int a = 10, b = 20;   // Step 4: Initialize variables
+
+    // Step 5: Print before swapv
+    printf("Before swapv: a = %d, b = %d\n", a, b);
+
+    // Step 6: Call swapv
+    swapv(a, b);
+    printf("After swapv (no change in actual values): a = %d, b = %d\n\n", a, b);
+
+    // Step 7: Print before swapr
+    printf("Before swapr: a = %d, b = %d\n", a, b);
+
+    // Step 8: Call swapr
+    swapr(&a, &b);
+    printf("After swapr (actual values swapped): a = %d, b = %d\n", a, b);
+
+    return 0;
+}
+
+```
 # Output:
+<img width="1350" height="746" alt="image" src="https://github.com/user-attachments/assets/b31113cc-a8ec-4dd9-8127-d2d5aeca6e3a" />
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -77,7 +121,40 @@
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+// Step 3: Recursive function to return Fibonacci number at position x
+int fibo(int x) {
+    if (x == 0 || x == 1) {
+        return x;   // Base case
+    } else {
+        return fibo(x - 1) + fibo(x - 2);  // Recursive case
+    }
+}
+
+int main() {
+    int n, i;
+
+    // Step 5: Prompt user
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    // Step 7: Display message
+    printf("Fibonacci series of %d terms:\n", n);
+
+    // Step 8: Generate series
+    for (i = 0; i < n; i++) {
+        printf("%d ", fibo(i));
+    }
+    printf("\n");
+
+    return 0;
+}
+```
 # Output:
+<img width="1348" height="743" alt="image" src="https://github.com/user-attachments/assets/c630f120-5094-45d8-85e6-6da4d68e0e55" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -119,7 +196,56 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+// Step 3: Recursive function
+void printEvenOdd(int cur, int limit) {
+    // Step 11.1: Termination condition
+    if (cur > limit) {
+        return;
+    }
+
+    // Step 11.2 & 11.3: Print current value
+    if (cur == limit) {
+        printf("%d", cur);   // last number, no trailing comma
+    } else {
+        printf("%d, ", cur);
+    }
+
+    // Step 11.4: Recursive call with step of 2
+    printEvenOdd(cur + 2, limit);
+}
+
+int main() {
+    int lowerLimit, upperLimit;
+
+    // Step 5: Prompt user
+    printf("Enter the lower limit: ");
+    scanf("%d", &lowerLimit);
+
+    // Step 7: Prompt user
+    printf("Enter the upper limit: ");
+    scanf("%d", &upperLimit);
+
+    // Step 9: Display message
+    if (lowerLimit % 2 == 0) {
+        printf("Even numbers in the range %d to %d:\n", lowerLimit, upperLimit);
+    } else {
+        printf("Odd numbers in the range %d to %d:\n", lowerLimit, upperLimit);
+    }
+
+    // Step 10: Call recursive function
+    printEvenOdd(lowerLimit, upperLimit);
+
+    printf("\n");
+    return 0;
+}
+
+```
 # Output:
+<img width="1343" height="745" alt="image" src="https://github.com/user-attachments/assets/156249ae-edc8-4efc-a9d3-c44a870aa610" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -161,7 +287,50 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```c
+#include <stdio.h>
+#include <stdlib.h>   // for calloc() and free()
+
+int main() {
+    int *ptr;        // Step 3a: pointer to int
+    int n, i, sum = 0; // Step 3b: variables
+
+    // Step 4: Read number of integers
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+
+    // Step 5: Allocate memory using calloc
+    ptr = (int *)calloc(n, sizeof(int));
+
+    // Step 6: Check if allocation succeeded
+    if (ptr == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; // exit program
+    }
+
+    // Step 7: Accept elements from user
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", (ptr + i));
+    }
+
+    // Step 8: Compute sum
+    for (i = 0; i < n; i++) {
+        sum += *(ptr + i);
+    }
+
+    // Step 9: Display sum
+    printf("Sum of the entered integers = %d\n", sum);
+
+    // Step 10: Free allocated memory
+    free(ptr);
+
+    return 0;
+}
+```
 # Output:
+<img width="1353" height="742" alt="image" src="https://github.com/user-attachments/assets/891bb0d6-bfff-476a-be8c-56dfd2413867" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -197,6 +366,42 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```c
+#include <stdio.h>
+
+// Step 3: Function prototype
+void displayArray(int *arr, int size);
+
+int main() {
+    int arr[5];   // Step 4: Declare array of size 5
+    int i;
+
+    // Step 5: Prompt user
+    printf("Enter 5 integers:\n");
+
+    // Step 6: Read integers into array
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Step 7: Call displayArray function
+    printf("The array elements are:\n");
+    displayArray(arr, 5);
+
+    return 0;
+}
+
+// Step 8: Function definition
+void displayArray(int *arr, int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        // Using pointer arithmetic
+        printf("%d ", *(arr + i));
+    }
+    printf("\n");
+}
+```
 # Output:
+<img width="1355" height="753" alt="image" src="https://github.com/user-attachments/assets/ef7ed44b-06b6-43df-a42a-115ef758886c" />
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
